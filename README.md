@@ -1,2 +1,2 @@
-# pages
+# unlucky.jp
 site
