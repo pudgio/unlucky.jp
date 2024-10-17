@@ -1,0 +1,77 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #000;
+    margin: 0;
+}
+
+.glow {
+    font-family: 'Raleway', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 5rem;
+    color: #fff;
+    text-align: center;
+    text-shadow: 
+        0 0 5px #1260cc,
+        0 0 10px #1260cc,
+        0 0 20px #4c61f5,
+        0 0 30px #7c7aff,
+        0 0 40px #bf7aff,
+        0 0 50px #bf7aff,
+        0 0 60px #bf7aff;
+    animation: glow-animation 1.5s infinite alternate;
+}
+
+@keyframes glow-animation {
+    0% {
+        text-shadow: 
+            0 0 5px #1260cc,
+            0 0 10px #1260cc,
+            0 0 20px #4c61f5,
+            0 0 30px #7c7aff,
+            0 0 40px #bf7aff,
+            0 0 50px #bf7aff,
+            0 0 60px #bf7aff;
+    }
+    25% {
+        text-shadow: 
+            10px 10px 5px #1260cc,
+            10px 10px 10px #1260cc,
+            10px 10px 20px #4c61f5,
+            10px 10px 30px #7c7aff,
+            10px 10px 40px #bf7aff,
+            10px 10px 50px #bf7aff,
+            10px 10px 60px #bf7aff;
+    }
+    50% {
+        text-shadow: 
+            -10px -10px 5px #4c61f5,
+            -10px -10px 10px #7c7aff,
+            -10px -10px 20px #bf7aff,
+            -10px -10px 30px #bf7aff,
+            -10px -10px 40px #bf7aff,
+            -10px -10px 50px #bf7aff,
+            -10px -10px 60px #bf7aff;
+    }
+    75% {
+        text-shadow: 
+            10px -10px 5px #7c7aff,
+            10px -10px 10px #4c61f5,
+            10px -10px 20px #1260cc,
+            10px -10px 30px #1260cc,
+            10px -10px 40px #4c61f5,
+            10px -10px 50px #7c7aff,
+            10px -10px 60px #bf7aff;
+    }
+    100% {
+        text-shadow: 
+            -10px 10px 5px #bf7aff,
+            -10px 10px 10px #7c7aff,
+            -10px 10px 20px #4c61f5,
+            -10px 10px 30px #1260cc,
+            -10px 10px 40px #1260cc,
+            -10px 10px 50px #4c61f5,
+            -10px 10px 60px #7c7aff;
+    }
+}
