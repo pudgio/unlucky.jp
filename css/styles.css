@@ -1,11 +1,11 @@
-<link rel="stylesheet" href="css/styles.css?v=1.1">
+<link rel="stylesheet" href="css/styles.css?v=1.2">
 
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #000;
+    background-color: #151515;
     margin: 0;
 }
 
