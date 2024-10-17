@@ -4,11 +4,76 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css?v=1.4">
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="stylesheet" href="css/styles.css">
     <title>unlucky.jp</title>
 </head>
 <body>
     <h1 class="glow">unlucky.jp</h1>
+    <div class="raining-text-container">
+        <!-- Randomly positioned and differently sized raining letters -->
+        <div class="rain-text" style="left: 2%; animation-duration: 5s; animation-delay: 0s;">u</div>
+        <div class="rain-text" style="left: 12%; animation-duration: 4s; animation-delay: 0.2s;">n</div>
+        <div class="rain-text" style="left: 7%; animation-duration: 6s; animation-delay: 0.4s;">l</div>
+        <div class="rain-text" style="left: 25%; animation-duration: 3s; animation-delay: 0.6s;">u</div>
+        <div class="rain-text" style="left: 18%; animation-duration: 4.5s; animation-delay: 0.8s;">c</div>
+        <div class="rain-text" style="left: 30%; animation-duration: 5.5s; animation-delay: 1s;">k</div>
+        <div class="rain-text" style="left: 40%; animation-duration: 6s; animation-delay: 1.2s;">y</div>
+
+        <div class="rain-text" style="left: 5%; animation-duration: 4s; animation-delay: 0s;">u</div>
+        <div class="rain-text" style="left: 17%; animation-duration: 5s; animation-delay: 0.2s;">n</div>
+        <div class="rain-text" style="left: 14%; animation-duration: 6s; animation-delay: 0.4s;">l</div>
+        <div class="rain-text" style="left: 28%; animation-duration: 3s; animation-delay: 0.6s;">u</div>
+        <div class="rain-text" style="left: 32%; animation-duration: 5s; animation-delay: 0.8s;">c</div>
+        <div class="rain-text" style="left: 24%; animation-duration: 4.5s; animation-delay: 1s;">k</div>
+        <div class="rain-text" style="left: 35%; animation-duration: 6s; animation-delay: 1.2s;">y</div>
+
+        <div class="rain-text" style="left: 15%; animation-duration: 5s; animation-delay: 0s;">u</div>
+        <div class="rain-text" style="left: 22%; animation-duration: 4s; animation-delay: 0.2s;">n</div>
+        <div class="rain-text" style="left: 29%; animation-duration: 6s; animation-delay: 0.4s;">l</div>
+        <div class="rain-text" style="left: 21%; animation-duration: 7s; animation-delay: 0.6s;">u</div>
+        <div class="rain-text" style="left: 10%; animation-duration: 3s; animation-delay: 0.8s;">c</div>
+        <div class="rain-text" style="left: 50%; animation-duration: 5s; animation-delay: 1s;">k</div>
+        <div class="rain-text" style="left: 75%; animation-duration: 5.5s; animation-delay: 1.2s;">y</div>
+
+        <div class="rain-text" style="left: 55%; animation-duration: 4.5s; animation-delay: 0s;">u</div>
+        <div class="rain-text" style="left: 60%; animation-duration: 5s; animation-delay: 0.2s;">n</div>
+        <div class="rain-text" style="left: 65%; animation-duration: 6s; animation-delay: 0.4s;">l</div>
+        <div class="rain-text" style="left: 80%; animation-duration: 7s; animation-delay: 0.6s;">u</div>
+        <div class="rain-text" style="left: 33%; animation-duration: 3s; animation-delay: 0.8s;">c</div>
+        <div class="rain-text" style="left: 42%; animation-duration: 5.5s; animation-delay: 1s;">k</div>
+        <div class="rain-text" style="left: 92%; animation-duration: 6s; animation-delay: 1.2s;">y</div>
+
+        <div class="rain-text" style="left: 70%; animation-duration: 6s; animation-delay: 0s;">u</div>
+        <div class="rain-text" style="left: 87%; animation-duration: 4s; animation-delay: 0.2s;">n</div>
+        <div class="rain-text" style="left: 55%; animation-duration: 5s; animation-delay: 0.4s;">l</div>
+        <div class="rain-text" style="left: 68%; animation-duration: 3s; animation-delay: 0.6s;">u</div>
+        <div class="rain-text" style="left: 77%; animation-duration: 4s; animation-delay: 0.8s;">c</div>
+        <div class="rain-text" style="left: 60%; animation-duration: 5s; animation-delay: 1s;">k</div>
+        <div class="rain-text" style="left: 80%; animation-duration: 6s; animation-delay: 1.2s;">y</div>
+    </div>
+
+    <audio id="background-audio" src="assets/underyourspell.ogg"></audio>
+
+    <script>
+        window.onload = function() {
+            const audio = document.getElementById("background-audio");
+            audio.volume = 0;
+            audio.play();
+
+            let fadeDuration = 4000;
+            let interval = 50;
+            let increment = interval / fadeDuration;
+
+            let fadeAudio = setInterval(() => {
+                if (audio.volume < 0.2) {
+                    audio.volume += increment;
+                } else {
+                    audio.volume = 0.2;
+                    clearInterval(fadeAudio);
+                }
+            }, interval);
+        };
+    </script>
 </body>
 </html>
