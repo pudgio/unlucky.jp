@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Image</title>
+</head>
+<body>
+    <h1>Upload Image</h1>
+    <form id="uploadForm" enctype="multipart/form-data">
+        <input type="file" name="image" id="image" accept="image/*" required>
+        <button type="submit">Upload</button>
+    </form>
+    <div id="linkContainer" style="display: none;">
+        <p>Image uploaded successfully! Here is your link:</p>
+        <a id="imageLink" href="#" target="_blank"></a>
+    </div>
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const formData = new FormData();
+            formData.append('image', document.getElementById('image').files[0]);
+
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                const linkContainer = document.getElementById('linkContainer');
+                const imageLink = document.getElementById('imageLink');
+                imageLink.href = result.link;
+                imageLink.textContent = result.link;
+                linkContainer.style.display = 'block';
+            } else {
+                alert('Image upload failed!');
+            }
+        });
+    </script>
+</body>
+</html>
