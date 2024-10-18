@@ -6,21 +6,17 @@ const fs = require('fs');
 const https = require('https');
 const http = require('http');
 
-// Load SSL certificates
-const privateKey = fs.readFileSync('path/to/your/private.key', 'utf8');
-const certificate = fs.readFileSync('path/to/your/certificate.crt', 'utf8');
-const ca = fs.readFileSync('path/to/your/ca_bundle.crt', 'utf8');
+const privateKey = fs.readFileSync(path.join(__dirname, 'certs', 'private.key'), 'utf8');
+const certificate = fs.readFileSync(path.join(__dirname, 'certs', 'certificate.crt'), 'utf8');
 
 const credentials = {
     key: privateKey,
-    cert: certificate,
-    ca: ca
+    cert: certificate
 };
 
 const app = express();
-const PORT = 443; // HTTPS port
+const PORT = 443;
 
-// Set up storage for uploaded images
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
         const uploadPath = path.join(__dirname, 'uploads');
@@ -39,7 +35,6 @@ const upload = multer({ storage });
 
 app.use(express.static('uploads'));
 
-// Handle image upload
 app.post('/upload', upload.single('image'), (req, res) => {
     if (!req.file) {
         return res.status(400).json({ error: 'No file uploaded' });
@@ -48,19 +43,16 @@ app.post('/upload', upload.single('image'), (req, res) => {
     res.json({ link: imageUrl });
 });
 
-// Serve the upload.html file
 app.get('/upload', (req, res) => {
     res.sendFile(path.join(__dirname, 'upload.html'));
 });
 
-// Create HTTPS server
 const httpsServer = https.createServer(credentials, app);
 
 httpsServer.listen(PORT, () => {
     console.log(`HTTPS Server is running on port ${PORT}`);
 });
 
-// Optionally, create an HTTP server to redirect to HTTPS
 const httpApp = express();
 httpApp.get('*', (req, res) => {
     res.redirect(`https://${req.headers.host}${req.url}`);
