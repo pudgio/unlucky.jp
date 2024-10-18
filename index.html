@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+SC:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="assets/ball.ico">
     <link rel="stylesheet" href="css/styles.css">
     <title>unlucky.jp</title>
 </head>
 <body>
     <h1 class="glow">unlucky.jp</h1>
     <div class="raining-text-container">
-        <!-- Randomly positioned and differently sized raining letters -->
         <div class="rain-text" style="left: 2%; animation-duration: 5s; animation-delay: 0s;">u</div>
         <div class="rain-text" style="left: 12%; animation-duration: 4s; animation-delay: 0.2s;">n</div>
         <div class="rain-text" style="left: 7%; animation-duration: 6s; animation-delay: 0.4s;">l</div>
@@ -52,19 +51,33 @@
         <div class="rain-text" style="left: 60%; animation-duration: 5s; animation-delay: 1s;">k</div>
         <div class="rain-text" style="left: 80%; animation-duration: 6s; animation-delay: 1.2s;">y</div>
     </div>
-
     <audio id="background-audio" src="assets/underyourspell.ogg"></audio>
-
+    <script>
+        const fullTitle = "unlucky.jp"; 
+        let currentTitle = ""; 
+        let index = 0;
+        function typeTitle() {
+            if (index < fullTitle.length) {
+                currentTitle += fullTitle.charAt(index); 
+                document.title = currentTitle; 
+                index++;
+            } else {
+                setTimeout(() => {
+                    currentTitle = "";
+                    index = 0;
+                }, 1000);
+            }
+        }
+        const typingEffect = setInterval(typeTitle, 250);
+    </script>
     <script>
         window.onload = function() {
             const audio = document.getElementById("background-audio");
             audio.volume = 0;
             audio.play();
-
             let fadeDuration = 4000;
             let interval = 50;
             let increment = interval / fadeDuration;
-
             let fadeAudio = setInterval(() => {
                 if (audio.volume < 0.2) {
                     audio.volume += increment;
