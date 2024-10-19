@@ -56,7 +56,7 @@ httpsServer.listen(PORT, () => {
 
 const httpApp = express();
 httpApp.get('*', (req, res) => {
-    res.redirect([`https://${req.headers.host}${req.url}`](command:_github.copilot.openSymbolFromReferences?%5B%22%22%2C%5B%7B%22uri%22%3A%7B%22scheme%22%3A%22file%22%2C%22authority%22%3A%22%22%2C%22path%22%3A%22%2Fc%3A%2FUsers%2Fdosbr%2FOneDrive%2FDesktop%2Funlucky.jp%2Funlucky.jp%2Fserver.js%22%2C%22query%22%3A%22%22%2C%22fragment%22%3A%22%22%7D%2C%22pos%22%3A%7B%22line%22%3A5%2C%22character%22%3A6%7D%7D%5D%2C%226ab2988d-0143-45cb-9eca-c2955c6f340e%22%5D "Go to definition"));
+    res.redirect(`https://${req.headers.host}${req.url}`);
 });
 const httpServer = http.createServer(httpApp);
 httpServer.listen(80, () => {
