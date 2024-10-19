@@ -7,8 +7,16 @@ const fs = require('fs');
 const https = require('https');
 const http = require('http');
 
-const privateKey = fs.readFileSync(path.join(__dirname, process.env.SSL_PRIVATE_KEY), 'utf8');
-const certificate = fs.readFileSync(path.join(__dirname, process.env.SSL_CERTIFICATE), 'utf8');
+const privateKeyPath = process.env.SSL_PRIVATE_KEY_PATH;
+const certificatePath = process.env.SSL_CERTIFICATE_PATH;
+
+if (!privateKeyPath || !certificatePath) {
+    console.error('SSL certificate paths are not set in the .env file');
+    process.exit(1);
+}
+
+const privateKey = fs.readFileSync(path.join(__dirname, privateKeyPath), 'utf8');
+const certificate = fs.readFileSync(path.join(__dirname, certificatePath), 'utf8');
 
 const credentials = {
     key: privateKey,
@@ -20,7 +28,7 @@ const PORT = 443;
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-        const uploadPath = path.join(__dirname, 'uploads');
+        const uploadPath = path.join(__dirname, 'i');
         if (!fs.existsSync(uploadPath)) {
             fs.mkdirSync(uploadPath);
         }
@@ -34,7 +42,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-app.use(express.static('uploads'));
+app.use(express.static('i'));
 
 app.post('/upload', upload.single('image'), (req, res) => {
     if (!req.file) {
