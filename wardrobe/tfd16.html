@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>unlucky.jp</title>
+    <link rel="stylesheet" href="../css/tfd.css">
+    <link rel="icon" type="image/x-icon" href="../assets/ball.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+    <script>
+        const fullTitle = "unlucky.jp"; 
+        let currentTitle = ""; 
+        let index = 0;
+        function typeTitle() {
+            if (index < fullTitle.length) {
+                currentTitle += fullTitle.charAt(index); 
+                document.title = currentTitle; 
+                index++;
+            } else {
+                setTimeout(() => {
+                    currentTitle = "";
+                    index = 0;
+                }, 1000);
+            }
+        }
+        const typingEffect = setInterval(typeTitle, 250);
+    </script>
+</head>
+<body>
+    <div class="image-container">
+        <img src="../assets/wardrobe/tfd-back.png" alt="TFD Back">
+        <img src="../assets/wardrobe/tfd-front.png" alt="TFD Front">
+    </div>
+</body>
+</html>

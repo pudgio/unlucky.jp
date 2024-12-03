@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>unlucky.jp</title>
+    <link rel="stylesheet" href="css/styles-wardrobe.css">
+    <link rel="icon" type="image/x-icon" href="assets/ball.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+
+    <script>
+        const fullTitle = "unlucky.jp"; 
+        let currentTitle = ""; 
+        let index = 0;
+        function typeTitle() {
+            if (index < fullTitle.length) {
+                currentTitle += fullTitle.charAt(index); 
+                document.title = currentTitle; 
+                index++;
+            } else {
+                setTimeout(() => {
+                    currentTitle = "";
+                    index = 0;
+                }, 1000);
+            }
+        }
+        const typingEffect = setInterval(typeTitle, 250);
+    </script>
+    
+    <style>
+        .image-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            padding: 16px;
+            justify-content: center;
+        }
+    
+        .image-item {
+            flex: 1 1 calc(33.333% - 32px);
+            max-width: calc(33.333% - 32px);
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 5%;
+            animation: glow 2s infinite;
+        }
+    
+        .image-item img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+        }
+    
+        .caption {
+            position: absolute;
+            bottom: 12px;
+            width: 100%;
+            text-align: center;
+            font-size: 7px; 
+            font-family: 'Courier Prime', monospace;
+            color: #CFCFCF;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="image-grid">
+        <div class="image-item">
+            <a href="../wardrobe/tfd16.html">
+                <img src="assets/wardrobe/tfd-back.png" alt="TFD Back">
+                <div class="caption">VETEMENTS AW16 TFD FEMME BOMBER</div>
+            </a>
+        </div>
+        <div class="image-item">
+            <a href="../wardrobe/frat19.html">
+                <img src="assets/wardrobe/frat-back.png" alt="Frat Back">
+                <div class="caption">VETEMENTS AW19 UNIVERSITY BOMBER</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

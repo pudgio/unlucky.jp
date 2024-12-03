@@ -1,0 +1,69 @@
+body {
+    background-color: #181818;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    font-family: 'Courier Prime', monospace;
+}
+
+@keyframes glow {
+    0% {
+        border-color: #1260cc;
+        box-shadow: 0 0 5px 2px #1260cc;
+    }
+    20% {
+        border-color: #4c61f5;
+        box-shadow: 0 0 5px 2px #4c61f5;
+    }
+    40% {
+        border-color: #7c7aff;
+        box-shadow: 0 0 5px 2px #7c7aff;
+    }
+    60% {
+        border-color: #bf7aff;
+        box-shadow: 0 0 5px 2px #bf7aff;
+    }
+    80% {
+        border-color: #8466e2;
+        box-shadow: 0 0 5px 2px #8466e2;
+    }
+    100% {
+        border-color: #a746ff;
+        box-shadow: 0 0 5px 2px #a746ff;
+    }
+}
+
+.image-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding: 16px;
+    justify-content: center;
+}
+
+.image-item {
+    flex: 1 1 calc(33.333% - 32px); /* Adjust the percentage to control the number of items per row */
+    max-width: calc(33.333% - 32px); /* Ensure the items don't exceed the container width */
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 5%; /* Adjusted height */
+    animation: glow 2s infinite;
+}
+
+.image-item img {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Ensure the entire image fits within the container */
+    display: block;
+}
+
+.caption {
+    position: absolute;
+    bottom: 12px; /* Position the text 12px above the bottom of the container */
+    width: 100%;
+    text-align: center;
+    font-size: 7px; /* Make the text 7px smaller */
+    font-family: 'Courier Prime', monospace;
+    color: #CFCFCF;
+}

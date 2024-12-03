@@ -1,0 +1,37 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Courier Prime', monospace;
+    background-color: #181818;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.image-container img {
+    max-width: 40% !important;
+    height: auto;
+    object-fit: contain;
+}
+
+.image-container img:first-child {
+    margin-top: 300px;
+}
+
+.text-container {
+    max-width: 40%;
+    color: white;
+}
